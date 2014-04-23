@@ -1,0 +1,34 @@
+<h2><%= @event.name %></h2>
+<h3>Created by: <%= "#{@event.creator.first_name} #{@event.creator.last_name}" %></h3>
+
+<ul>
+  <li>Price: $<%= @event.price %></li>
+  <li><%= "#{@event.event_start.strftime("%A, %B %e, %Y")}" %></li>
+  <li><%= "#{@event.event_start.strftime("%l:%M%p")}" %></li>
+  
+  <li><%= @event.description%></li>
+  <li>Sign Up By:</li>
+  <li><%= "#{@event.signup_end.strftime("%A, %B %e, %Y")}" %></li>
+  <li><%= "#{@event.signup_end.strftime("%l:%M%p")}" %></li>
+</ul>
+
+<!-- If an attendance entry already exists for current user and event id, display unattend button -->
+
+<!-- else display attend button -->
+<%= button_to "Attend", attendances_path %>
+
+
+
+
+
+<!-- 
+      t.string :name
+      t.text :description
+      t.string :category
+      t.decimal :price
+      t.belongs_to :user
+      t.datetime :signup_start
+      t.datetime :signup_end
+      t.datetime :event_start
+      t.datetime :event_end
+      t.boolean :uses_paypal -->
