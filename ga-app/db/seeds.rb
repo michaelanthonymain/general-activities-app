@@ -39,3 +39,7 @@ end
 25.times do
   Attendance.create(user_id: users.sample, event_id: events.sample, is_paid: boolean.sample )
 end
+
+20.times do
+  Comment.create(user_id: users.sample, event_id: events.sample, content: "This is a comment.")
+end
