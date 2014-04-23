@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index, :show]
 
+  resources :attendances, only: [:create, :destroy]
+
 end
 
