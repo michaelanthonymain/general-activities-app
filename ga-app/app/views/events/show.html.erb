@@ -17,7 +17,21 @@
 <!-- else display attend button -->
 <%= button_to "Attend", attendances_path %>
 
-
+<div class="container">
+<h4>Comments Section</h4>
+  <% @event.comments.each do |comment| %>
+    <div class="container">
+      <h4><%= comment.user.first_name %></h4>
+      <p><%= comment.content %></p>
+    </div>
+  <% end %>
+  <h5>Comment on this post:</h5>
+  <%= form_for @comment, url: event_comments_path(@event.id) do |f| %>
+    <%= f.label :content, "Content:" %><br>
+    <%= f.text_area :content, size: '40x10' %><br><br>
+    <%= f.submit "Comment" %>
+  <% end %>
+</div>
 
 
 

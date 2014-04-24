@@ -4,9 +4,12 @@ Rails.application.routes.draw do
     resources :events, except: [:index, :show]
   end
 
-  resources :events, only: [:index, :show]
+  resources :events, only: [:index, :show] do
+    resources :comments, only: [:create, :destroy]
+  end
 
   resources :attendances, only: [:create, :destroy]
+
 
 end
 
