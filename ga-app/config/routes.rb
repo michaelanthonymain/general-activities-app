@@ -14,3 +14,5 @@ Rails.application.routes.draw do
   get '/sessions/signin', to: 'sessions#signin'
   get '/sessions/auth', to: 'sessions#auth'
   get '/sessions/logout', to: 'sessions#logout'
+
+end
