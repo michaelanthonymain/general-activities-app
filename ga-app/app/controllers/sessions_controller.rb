@@ -16,17 +16,19 @@ class SessionsController < ApplicationController
     dbc_user = DBC::User.find(user_attributes["id"])
 
     @user = User.find_by(:oauth_token => session[:oauth_token][:token])
+    puts "This is the user after find #{@user.inspect}"
     if !@user
-      @user = User.create!(oauth_token: session[:oauth_token][:token], 
-        email: session[:user_attributes]['email'], 
+      @user = User.create!(oauth_token: session[:oauth_token][:token],
+        email: session[:user_attributes]['email'],
         name: session[:user_attributes]['name'],
         cohort: dbc_user.cohort.name,
         avatar_url: session[:user_attributes]['avatar_image_url'])
+       puts "This is the user after create #{@user.inspect}"
     end
 
     reset_session
     session[:user_id] = @user.id
-    
+
     redirect_to root_path
   end
 

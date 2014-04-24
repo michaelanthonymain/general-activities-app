@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 		attendance = Attendance.where(user: current_user, event: @event).first
 		attendance ? @attending = true : @attending = false
+		@comment = Comment.new
 	end
 
 	def new
@@ -19,12 +20,14 @@ class EventsController < ApplicationController
 
 	def create
 		@event = Event.new(event_params.merge(user_id: params[:user_id]))
+
 		if @event.save!
 			ModelMailer.new_event_notification(@event, current_user.email).deliver
 			redirect_to @event
 		else
 			render "new"
 		end
+		
 	end
 
 	def edit
@@ -38,7 +41,8 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
-
+		@event = Event.destroy(params[:id])
+		redirect_to user_path(params[:user_id])
 	end
 
 	private
