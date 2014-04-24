@@ -15,4 +15,9 @@
 <!-- If an attendance entry already exists for current user and event id, display unattend button -->
 
 <!-- else display attend button -->
-<%= button_to "Attend", attendances_path %>
+
+<% if Time.now > @event.signup_end %>
+  <%= button_to "Sign up for this event is now closed", {}, disabled: true %>
+<% else %>
+  <%= button_to "Attend", attendances_path, id: "attend" %>
+<% end %>

@@ -1,10 +1,5 @@
 class EventsController < ApplicationController
 	def index
-    puts "in event index"
-    @current_user = current_user
-    puts "current user is: #{@current_user}"
-    puts "=================================================="
-    puts "the sesion has #{session.inspect}"
     if current_user
     	@events = Event.all
     else
@@ -22,13 +17,12 @@ class EventsController < ApplicationController
 
 	def create
 		@event = Event.new(event_params.merge(user_id: params[:user_id]))
-		# @event.save
-			if @event.save!
-				ModelMailer.new_event_notification(@event, current_user.email).deliver
-				redirect_to @event
-			else
-				render "new"
-			end
+		if @event.save!
+			ModelMailer.new_event_notification(@event, current_user.email).deliver
+			redirect_to @event
+		else
+			render "new"
+		end
 	end
 
 	def edit
