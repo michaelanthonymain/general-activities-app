@@ -11,7 +11,7 @@ class ModelMailer < ActionMailer::Base
     @creator = creator
 
     #using my email for now. Should swap in different emails as necessary.
-    mail to: "#{@creator}", subject: "Success! You did it."
+    mail to: "#{@creator}", subject: "Your new event on Hop To It."
   end
 
 end
