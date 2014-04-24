@@ -4,7 +4,7 @@
   <ul>
     <li>Event Name: <%= event.name %></li><br>
     <ul>
-      <li>Category: <%= event.category %></li><br>
+      <li>Category: <%= event.category.name %></li><br>
       <li>Price: $<%= event.price %></li><br>
       <li>Starts at: <%= event.event_start.strftime("%c") %></li>
     </ul>
