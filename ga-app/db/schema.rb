@@ -54,11 +54,11 @@ ActiveRecord::Schema.define(version: 20140424142903) do
   end
 
   create_table "users", force: true do |t|
-    t.boolean  "is_admin"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.boolean  "is_admin",    default: false
+    t.string   "name"
     t.string   "email"
     t.string   "cohort"
+    t.string   "avatar_url"
     t.string   "oauth_token"
     t.datetime "created_at"
     t.datetime "updated_at"
