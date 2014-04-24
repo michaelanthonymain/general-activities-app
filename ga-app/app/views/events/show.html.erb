@@ -1,3 +1,5 @@
+<%= render './nav' %>
+
 <h2><%= @event.name %></h2>
 <h3>Created by: <%= @event.name %></h3>
 
@@ -26,7 +28,7 @@
 <h4>Comments Section</h4>
   <% @event.comments.each do |comment| %>
     <div class="container">
-      <h4><%= comment.user.first_name %></h4>
+      <h4><%= comment.user.name %></h4>
       <p><%= comment.content %></p>
     </div>
   <% end %>

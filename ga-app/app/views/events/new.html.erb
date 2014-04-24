@@ -1,25 +1,26 @@
+<%= render './nav' %>
 
-  <h3>Create a new event:</h3>
+<h3>Create a new event:</h3>
   <%= form_for @event, url: user_events_path do |f| %>
-    <%= f.label :name, "Name:"%> <br>
-    <%= f.text_field :name, placeholder: 'John Legend Concert' %> <br><br>
-    <%= f.label :description, "Description:"%> <br>
-    <%= f.text_area :description, placeholder: 'Smooth music extravaganza' %> <br><br>
-    <%= f.label :category, "Category:" %><br>
-    <%= collection_select(:event, :category_id, Category.all, :id, :name) %><br><br>
-    <%= f.label :price, "Price:"%> <br>
-    <%= f.text_field :price, placeholder: '10.00' %> <br><br>
-    <%= f.label :signup_start, "Signup start time:"%> <br>
-    <%= f.datetime_local_field :signup_start %> <br><br>
-    <%= f.label :signup_end, "Signup end time:"%> <br>
-    <%= f.datetime_local_field :signup_end %> <br><br>
-    <%= f.label :event_start, "Event starts at:"%> <br>
-    <%= f.datetime_local_field :event_start %> <br><br>
-    <%= f.label :event_end, "Event ends at:"%> <br>
-    <%= f.datetime_local_field :event_end %> <br><br>
-    <%= f.label :uses_paypal, "Using Paypal?" %> <br>
-    <%= f.radio_button :uses_paypal, true %> Yes <br>
-    <%= f.radio_button :uses_paypal, false %> No <br><br>
-    <%= f.submit "Create Event"%>
+  <%= f.label :name, "Name:"%> <br>
+  <%= f.text_field :name, placeholder: 'John Legend Concert' %> <br><br>
+  <%= f.label :description, "Description:"%> <br>
+  <%= f.text_area :description, placeholder: 'Smooth music extravaganza' %> <br><br>
+  <%= f.label :category, "Category:" %><br>
+  <%= collection_select(:event, :category_id, Category.all, :id, :name) %><br><br>
+  <%= f.label :price, "Price:"%> <br>
+  <%= f.text_field :price, placeholder: '10.00' %> <br><br>
+  <%= f.label :signup_start, "Signup start time:"%> <br>
+  <%= f.datetime_local_field :signup_start %> <br><br>
+  <%= f.label :signup_end, "Signup end time:"%> <br>
+  <%= f.datetime_local_field :signup_end %> <br><br>
+  <%= f.label :event_start, "Event starts at:"%> <br>
+  <%= f.datetime_local_field :event_start %> <br><br>
+  <%= f.label :event_end, "Event ends at:"%> <br>
+  <%= f.datetime_local_field :event_end %> <br><br>
+  <%= f.label :uses_paypal, "Using Paypal?" %> <br>
+  <%= f.radio_button :uses_paypal, true %> Yes <br>
+  <%= f.radio_button :uses_paypal, false %> No <br><br>
+  <%= f.submit "Create Event"%>
 <%end%>
 

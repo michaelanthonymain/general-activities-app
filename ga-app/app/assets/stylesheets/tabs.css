@@ -1,6 +1,7 @@
 .tab {
     display: none;
 }
+
 .tabs {
     float: left;
     border-bottom: 1px solid #ccc;
@@ -8,6 +9,7 @@
     margin-bottom: 16px;
     list-style: none;
 }
+
 .tabs li {
     float: left;
     margin-right: 16px;
@@ -15,6 +17,7 @@
     height: 30px;
     line-height: 30px;
 }
+
 .tabs li a {
     color: #666;
     font-family: Helvetica, Arial, sans-serif;

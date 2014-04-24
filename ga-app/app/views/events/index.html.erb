@@ -1,8 +1,8 @@
+<%= render './nav' %>
 
-<div class="container">
 <% @events.each do |event| %>
   <ul>
-    <li>Event Name: <%= event.name %></li><br>
+    <li><%= link_to event.name, event %></li><br>
     <ul>
       <li>Category: <%= event.category.name %></li><br>
       <li>Price: $<%= event.price %></li><br>
@@ -11,7 +11,3 @@
   </ul>
 
 <%end%>
-
-<%= link_to "Logout", sessions_logout_path %>
-
-</div>
