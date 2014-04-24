@@ -9,6 +9,8 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
+		attendance = Attendance.where(user: current_user, event: @event).first
+		attendance ? @attending = true : @attending = false
 	end
 
 	def new
