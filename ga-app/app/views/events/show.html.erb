@@ -1,5 +1,5 @@
 <h2><%= @event.name %></h2>
-<h3>Created by: <%= "#{@event.creator.first_name} #{@event.creator.last_name}" %></h3>
+<h3>Created by: <%= @event.name %></h3>
 
 <ul>
   <li>Price: $<%= @event.price %></li>
@@ -15,6 +15,7 @@
 <!-- If an attendance entry already exists for current user and event id, display unattend button -->
 
 <!-- else display attend button -->
+
 <%= button_to "Attend", attendances_path %>
 
 <div class="container">
@@ -46,3 +47,6 @@
       t.datetime :event_start
       t.datetime :event_end
       t.boolean :uses_paypal -->
+
+<%= button_to "Attend", attendances_path %>
+

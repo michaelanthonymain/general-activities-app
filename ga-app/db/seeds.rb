@@ -40,7 +40,13 @@ Category.create(name: "Other")
 
 
 5.times do
-  User.create(is_admin: false, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, cohort: Faker::Team.creature, oauth_token: Faker::Lorem.characters(30) )
+  User.create(is_admin: false, 
+  						name: Faker::Name.name, 
+  						email: Faker::Internet.email, 
+  						cohort: Faker::Team.creature, 
+  						avatar_url: "http://www.gravatar.com/avatar/6f7587bc566de4570e5a63a84ad234b3.png", 
+  						oauth_token: Faker::Lorem.characters(30) 
+  						)
 end
 
 users = [1, 2, 3, 4, 5]
@@ -49,15 +55,28 @@ boolean = [true, false]
 categories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
 15.times do
-  Event.create(name: Faker::Company.name, description: "This is a description.", category_id: categories.sample, price: rand_price(10, 50), user_id: users.sample, signup_start: rand_time(2.days.ago), signup_end: 2.days.from_now, event_start: 3.days.from_now, event_end: 4.days.from_now, uses_paypal: false )
+  Event.create(name: Faker::Company.name, 
+  						 description: "This is a description.", 
+  						 category_id: categories.sample, 
+  						 price: rand_price(10, 50), user_id: users.sample, 
+  						 signup_start: rand_time(2.days.ago), 
+  						 signup_end: 2.days.from_now, 
+  						 event_start: 3.days.from_now, 
+  						 event_end: 4.days.from_now, 
+  						 uses_paypal: false 
+  						 )
 end
 
 25.times do
-  Attendance.create(user_id: users.sample, event_id: events.sample, is_paid: boolean.sample )
+  Attendance.create(user_id: users.sample, 
+  									event_id: events.sample, 
+  									is_paid: boolean.sample )
 end
 
 20.times do
-  Comment.create(user_id: users.sample, event_id: events.sample, content: "This is a comment.")
+  Comment.create(user_id: users.sample, 
+  							 event_id: events.sample, 
+  							 content: "This is a comment.")
 end
 
 

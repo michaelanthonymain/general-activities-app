@@ -1,6 +1,15 @@
 class EventsController < ApplicationController
 	def index
-		@events = Event.all
+    puts "in event index"
+    @current_user = current_user
+    puts "current user is: #{@current_user}"
+    puts "=================================================="
+    puts "the sesion has #{session.inspect}"
+    if current_user
+    	@events = Event.all
+    else
+      redirect_to sessions_new_path
+    end
 	end
 
 	def show
@@ -15,10 +24,11 @@ class EventsController < ApplicationController
 	def create
 		@event = Event.new(event_params.merge(user_id: params[:user_id]))
 			if @event.save!
+				ModelMailer.new_event_notification(@event, current_user.email).deliver
 				redirect_to @event
 			else
 				render "new"
-			end		
+			end
 	end
 
 	def edit
@@ -32,14 +42,14 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
-		
+
 	end
 
 	private
 
 	def event_params
-		params.require(:event).permit(:name, :description, :category_id, 
-																	:price, :user_id, :signup_start, 
+		params.require(:event).permit(:name, :description, :category_id,
+																	:price, :user_id, :signup_start,
 																	:signup_end, :event_start, :event_end,
 																	:uses_paypal)
 	end
