@@ -8,31 +8,30 @@ class SessionsController < ApplicationController
   end
 
   def auth
-    puts "at auth and the params are #{params.inspect}"
     token = get_oauth_token(params[:code])
     user_data = get_user(token)
     user_attributes = JSON.parse(user_data.body)
     session[:user_attributes] = user_attributes
     session[:oauth_token] = token_as_hash(token)
+    dbc_user = DBC::User.find(user_attributes["id"])
 
     @user = User.find_by(:oauth_token => session[:oauth_token][:token])
-    puts "User after find_by #{@user}"
     if !@user
-      @user = User.create!(:oauth_token => session[:oauth_token][:token], :email=> session[:user_attributes]['email'], 
-        :name=> session[:user_attributes]['name'])
-      puts "User after create #{@user}"
+      @user = User.create!(oauth_token: session[:oauth_token][:token], 
+        email: session[:user_attributes]['email'], 
+        name: session[:user_attributes]['name'],
+        cohort: dbc_user.cohort.name,
+        avatar_url: session[:user_attributes]['avatar_image_url'])
     end
-    puts "----------------------------------------"
-    puts "the session has: #{session[:oauth_token].inspect}"
 
-    session.clear
+    reset_session
     session[:user_id] = @user.id
-
+    
     redirect_to root_path
   end
 
   def logout
-    session.clear
+    reset_session
     redirect_to root_path
   end
 
@@ -44,16 +43,10 @@ class SessionsController < ApplicationController
   end
 
   def dbc_auth
-    puts "at dbc_auth"
-    # if !session[:oauth_token]
-    #   oauth_client.auth_code.authorize_url(redirect_uri: 'https://auth.devbootcamp.com')
-    # else
-      oauth_client.auth_code.authorize_url(redirect_uri: 'http://localhost:3000/sessions/auth')
-    # end
+    oauth_client.auth_code.authorize_url(redirect_uri: 'http://localhost:3000/sessions/auth')
   end
 
   def get_oauth_token(code)
-    puts "at get oauth token"
     oauth_client.auth_code.get_token(code, redirect_uri: 'http://localhost:3000/sessions/auth')
   end
 
