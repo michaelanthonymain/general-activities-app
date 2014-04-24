@@ -1,0 +1,24 @@
+<h3>Update Your Event</h3>
+
+<%= form_for @event, url: user_event_path do |f| %>
+	<%= f.label :name, "Name:" %><br>
+	<%= f.text_field :name %> <br><br>
+	<%= f.label :description, "Description:" %><br>
+	<%= f.text_area :description, size: '40x10' %><br><br>
+	<%= f.label :category_id, "Category:" %><br>
+	<%= collection_select(:event, :category_id, Category.all, :id, :name) %><br><br>
+	<%= f.label :price, "Price:" %><br>
+	<%= f.text_field :price %> <br><br>
+	<%= f.label :signup_start, "Signup Start:" %><br>
+	<%= f.datetime_local_field :signup_start %> <br><br>
+	<%= f.label :signup_end, "Signup End:" %><br>
+	<%= f.datetime_local_field :signup_end %> <br><br>
+	<%= f.label :event_start, "Event Start:" %><br>
+	<%= f.datetime_local_field :event_start %> <br><br>
+	<%= f.label :event_end, "Event End:" %><br>
+	<%= f.datetime_local_field :event_end %> <br><br>
+	<%= f.label :uses_paypal, "Using Paypal?" %><br>
+	<%= f.radio_button :uses_paypal, true %> Yes<br>
+	<%= f.radio_button :uses_paypal, false %> No <br><br>
+	<%= f.submit "Update Event" %>
+<% end %>
