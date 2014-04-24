@@ -15,4 +15,38 @@
 <!-- If an attendance entry already exists for current user and event id, display unattend button -->
 
 <!-- else display attend button -->
+
 <%= button_to "Attend", attendances_path %>
+
+<div class="container">
+<h4>Comments Section</h4>
+  <% @event.comments.each do |comment| %>
+    <div class="container">
+      <h4><%= comment.user.first_name %></h4>
+      <p><%= comment.content %></p>
+    </div>
+  <% end %>
+  <h5>Comment on this post:</h5>
+  <%= form_for @comment, url: event_comments_path(@event.id) do |f| %>
+    <%= f.label :content, "Content:" %><br>
+    <%= f.text_area :content, size: '40x10' %><br><br>
+    <%= f.submit "Comment" %>
+  <% end %>
+</div>
+
+
+
+<!-- 
+      t.string :name
+      t.text :description
+      t.string :category
+      t.decimal :price
+      t.belongs_to :user
+      t.datetime :signup_start
+      t.datetime :signup_end
+      t.datetime :event_start
+      t.datetime :event_end
+      t.boolean :uses_paypal -->
+
+<%= button_to "Attend", attendances_path %>
+

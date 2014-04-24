@@ -14,6 +14,7 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
+		@comment = Comment.new
 	end
 
 	def new
@@ -22,7 +23,6 @@ class EventsController < ApplicationController
 
 	def create
 		@event = Event.new(event_params.merge(user_id: params[:user_id]))
-		# @event.save
 			if @event.save!
 				ModelMailer.new_event_notification(@event, current_user.email).deliver
 				redirect_to @event
