@@ -16,7 +16,11 @@
 
 <!-- else display attend button -->
 
-<%= button_to "Attend", attendances_path %>
+<% if Time.now > @event.signup_end || @attending = true %>
+  <%= button_to "Sign up for this event is now closed", {}, disabled: true %>
+<% else %>
+  <%= button_to "Attend", attendances_path, id: "attend" %>
+<% end %>
 
 <div class="container">
 <h4>Comments Section</h4>
@@ -48,5 +52,4 @@
       t.datetime :event_end
       t.boolean :uses_paypal -->
 
-<%= button_to "Attend", attendances_path %>
 
