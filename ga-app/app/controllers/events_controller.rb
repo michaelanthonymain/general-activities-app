@@ -38,7 +38,9 @@ class EventsController < ApplicationController
 	def update
 		@event_to_update = Event.find(params[:id])
 		@event_to_update.update(event_params)
-		redirect_to @event_to_update
+             @attendee_emails = @event_to_update.attendees.map{ |attendee| attendee.email }
+              ModelMailer.edited_event_notification(@event_to_update, @attendee_emails)
+    		redirect_to @event_to_update
 	end
 
 	def destroy

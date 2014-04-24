@@ -14,4 +14,11 @@ class ModelMailer < ActionMailer::Base
     mail to: "#{@creator}", subject: "Your new event on Hop To It."
   end
 
+  def edited_event_notification(event, attendees)
+    @event = event
+    @attendees = attendees
+
+    mail to: @attendees, subject: "Heads up! #{@event.name} was edited on Hop To It!"
+  end
+
 end
