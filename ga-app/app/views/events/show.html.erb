@@ -1,5 +1,5 @@
 <h2><%= @event.name %></h2>
-<h3>Created by: <%= "#{@event.creator.first_name} #{@event.creator.last_name}" %></h3>
+<h3>Created by: <%= @event.name %></h3>
 
 <ul>
   <li>Price: $<%= @event.price %></li>
@@ -16,19 +16,3 @@
 
 <!-- else display attend button -->
 <%= button_to "Attend", attendances_path %>
-
-
-
-
-
-<!-- 
-      t.string :name
-      t.text :description
-      t.string :category
-      t.decimal :price
-      t.belongs_to :user
-      t.datetime :signup_start
-      t.datetime :signup_end
-      t.datetime :event_start
-      t.datetime :event_end
-      t.boolean :uses_paypal -->
