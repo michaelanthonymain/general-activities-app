@@ -1,10 +1,10 @@
-<h1>GaApp</h1>
+<h1>Hop to It</h1>
 
 <nav>
 	<ul>
 		<li><%= link_to "Events", events_path %></li>
-		<li><%= link_to "Create Event", new_event_path %></li>
-		<li><%= link_to "My Events", events_path %></li>
-		<li><%= link_to "Logout", logout_path %></li>
+		<li><%= link_to "Create Event", new_user_event_path(current_user) %></li>
+		<li><%= link_to "My Events", user_path(current_user) %></li>
+		<li><%= link_to "Logout", sessions_logout_path %></li>
 	</ul>
 </nav>
