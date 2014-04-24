@@ -1,5 +1,9 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'dbc-ruby'
+require 'omniauth'
+require 'omniauth-dbc'
+
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_record/railtie"
