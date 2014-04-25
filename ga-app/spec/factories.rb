@@ -12,4 +12,9 @@
 #     name "Admin User"
 #     sequence(:email) {|n| "admin#{n}@example.com"}
 #   end
+
+#   factory :event do
+#     name "Test event"
+#     description "This is a test event"
+#   end
 # end
