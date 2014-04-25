@@ -1,4 +1,4 @@
-# require 'spec_helper'
+require 'spec_helper'
 
 describe Event do
   #Associations
@@ -21,4 +21,16 @@ describe Event do
   it { should have_db_column(:uses_paypal).of_type(:boolean) }
   it { should have_db_column(:recurring_events).of_type(:boolean) }
   it { should have_db_column(:recurring_timeframe).of_type(:string) }
+
+  context "creates a recurring event (copy of event)" do 
+
+    let(:event) { FactoryGirl.build(:event)}
+    it "returns a copy of the event" do 
+      recurring_event = Event.create_recurring_event(event)
+
+      expect(recurring_event.name).to eq "Test Event"
+    end
+
+  end
+
 end
