@@ -1,11 +1,12 @@
 # require 'spec_helper'
 
-# FactoryGirl.define do
-#   factory :user do
-#     is_admin false
-#     name "Test User"
-#     sequence(:email) { |n| "#{cohort}#{n}@example.com"}
-#   end
+FactoryGirl.define do
+  factory :user do
+    is_admin false
+    name "TestUser"
+    sequence(:email) { |n| "#{name}#{n}@example.com"}
+  end
+end
 
 #   factory :admin, class: User do
 #     is_admin true
