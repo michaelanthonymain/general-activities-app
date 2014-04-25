@@ -22,6 +22,7 @@ class Event < ActiveRecord::Base
     event = Event.new(
       name: last_event.name,
       description: last_event.description,
+      category_id: last_event.category_id,
       price: last_event.price,
       user_id: last_event.user_id,
       uses_paypal: last_event.uses_paypal,

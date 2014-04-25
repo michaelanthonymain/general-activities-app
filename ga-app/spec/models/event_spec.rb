@@ -25,10 +25,34 @@ describe Event do
   context "creates a recurring event (copy of event)" do 
     let(:event) { FactoryGirl.build(:event)}
 
-    it "returns a copy of the event" do 
+    it "returns event with same name" do 
       recurring_event = Event.create_recurring_event(event)
 
       expect(recurring_event.name).to eq "Test Event"
+    end
+
+    it "returns event with same description" do 
+      recurring_event = Event.create_recurring_event(event)
+
+      expect(recurring_event.description).to eq "Testing with a factory"
+    end    
+
+    it "returns event with same category_id" do 
+      recurring_event = Event.create_recurring_event(event)
+
+      expect(recurring_event.category_id).to eq 1
+    end
+
+    it "returns event with same uses_paypal" do 
+      recurring_event = Event.create_recurring_event(event)
+
+      expect(recurring_event.uses_paypal).to eq true
+    end
+
+    it "returns event with same recurring_timeframe" do 
+      recurring_event = Event.create_recurring_event(event)
+
+      expect(recurring_event.recurring_timeframe).to eq "weekly"
     end
 
     it "returns event with signup_start forwarded the specified recurring timeframe" do 
