@@ -30,6 +30,9 @@
     <div class="container">
       <h4><%= comment.user.name %></h4>
       <p><%= comment.content %></p>
+      <% if comment.user.id == session[:user_id] %>
+        <%= button_to "Delete Comment", event_comment_path(@event.id, session[:user_id], comment.id), method: :delete %>
+      <% end %>
     </div>
   <% end %>
   <h5>Comment on this post:</h5>
@@ -38,6 +41,7 @@
     <%= f.text_area :content, size: '40x10' %><br><br>
     <%= f.submit "Comment" %>
   <% end %>
+
 </div>
 
 

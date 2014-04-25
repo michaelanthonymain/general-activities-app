@@ -7,7 +7,9 @@ class CommentsController < ApplicationController
   end 
 
   def destroy
+    @comment = Comment.find(params[:format])
     @comment.destroy
+    redirect_to Event.find(params[:event_id])
   end
 
   def comment_params
