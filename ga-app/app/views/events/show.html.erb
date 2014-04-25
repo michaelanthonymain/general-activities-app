@@ -7,7 +7,7 @@
   <li>Price: $<%= @event.price %></li>
   <li><%= "#{@event.event_start.strftime("%A, %B %e, %Y")}" %></li>
   <li><%= "#{@event.event_start.strftime("%l:%M%p")}" %></li>
-  
+
   <li><%= @event.description%></li>
   <li>Sign Up By:</li>
   <li><%= "#{@event.signup_end.strftime("%A, %B %e, %Y")}" %></li>
@@ -24,7 +24,7 @@
   <%= button_to "Attend", attendances_path, id: "attend" %>
 <% end %>
 
-<div class="container">
+<div class="container comment-list">
 <h4>Comments Section</h4>
   <% @event.comments.each do |comment| %>
     <div class="container">
@@ -33,7 +33,7 @@
     </div>
   <% end %>
   <h5>Comment on this post:</h5>
-  <%= form_for @comment, url: event_comments_path(@event.id) do |f| %>
+  <%= form_for @comment, remote: true, url: event_comments_path(@event.id) do |f| %>
     <%= f.label :content, "Content:" %><br>
     <%= f.text_area :content, size: '40x10' %><br><br>
     <%= f.submit "Comment" %>
@@ -42,7 +42,7 @@
 
 
 
-<!-- 
+<!--
       t.string :name
       t.text :description
       t.string :category

@@ -2,9 +2,15 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params.merge(event_id: params[:event_id], user_id: session[:user_id]))
-    @comment.save!
-    redirect_to Event.find(11)  
-  end 
+    respond_to do |format|
+        puts "In the response block."
+       if @comment.save!
+          format.html {redirect_to Event.find(@comment.event_id), notice: 'Comment posted successfully.'}
+          format.js
+      end
+    end
+  end
+
 
   def destroy
     @comment.destroy
