@@ -1,12 +1,14 @@
 class AttendancesController < ApplicationController
-	def create
-		# Take current logged in user id
-		# Take current event pages id
-		# create a new attendance in table
-		# if saved 
+	
+  def create
+    @attendance = Attendance.new(event_id: params[:format], user_id: session[:user_id])
+    @attendance.save!
+    redirect_to Event.find(params[:format])
 	end
 
 	def destroy
-		# delete attendance from table if user clicks unattend
+		@attendance = Attendance.find_by_user_id_and_event_id(session[:user_id], params[:id] )
+    @attendance.destroy
+    redirect_to Event.find(params[:id])
 	end
 end
