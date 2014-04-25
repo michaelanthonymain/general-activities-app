@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424142903) do
+ActiveRecord::Schema.define(version: 20140425181924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "attendances", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.boolean  "is_paid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -30,36 +22,8 @@ ActiveRecord::Schema.define(version: 20140424142903) do
     t.datetime "updated_at"
   end
 
-  create_table "comments", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "event_id"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "events", force: true do |t|
-    t.string   "name"
-    t.text     "description"
     t.integer  "category_id"
-    t.decimal  "price"
-    t.integer  "user_id"
-    t.datetime "signup_start"
-    t.datetime "signup_end"
-    t.datetime "event_start"
-    t.datetime "event_end"
-    t.boolean  "uses_paypal"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.boolean  "is_admin",    default: false
-    t.string   "name"
-    t.string   "email"
-    t.string   "cohort"
-    t.string   "avatar_url"
-    t.string   "oauth_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
