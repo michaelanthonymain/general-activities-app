@@ -1,13 +1,26 @@
 <%= render './nav' %>
 
-<% @events.each do |event| %>
-  <ul>
-    <li><%= link_to event.name, event %></li><br>
-    <ul>
-      <li>Category: <%= event.category.name %></li><br>
-      <li>Price: $<%= event.price %></li><br>
-      <li>Starts at: <%= event.event_start.strftime("%c") %></li>
-    </ul>
-  </ul>
+<div id="sort-controls">
+	<div class="sort" data-sort="time:desc">Sooner</div>
+	<div class="sort" data-sort="time:asc">Later</div>
+</div>
 
-<%end%>
+<div id="filter-controls">
+	<div class="filter" data-filter="all">All</div>
+	<% @categories.each do |cat| %>
+		<div class="filter" data-filter=".category-<%= cat.id %>">
+			<%= cat.name %>
+		</div>
+	<% end %>
+</div>
+
+<div id="EventList">
+	<% @events.reverse.each_with_index do |event, index| %>
+		<div class="mix category-<%= event.category.id %>" data-value="<%= index + 1 %>" data-time="<%= Time.now - event.event_start %>"> 
+			 <%= link_to event.name, event %><br>
+			 <%= event.price %><br>
+			 <%= event.event_start.strftime("%c") %><br>
+		</div>
+
+	<%end%>
+</div>
