@@ -18,10 +18,14 @@
 
 <!-- else display attend button -->
 
-<% if Time.now > @event.signup_end || @attending == true %>
+<% if Time.now > @event.signup_end %>
   <%= button_to "Sign up for this event is now closed", {}, disabled: true %>
 <% else %>
-  <%= button_to "Attend", attendances_path, id: "attend" %>
+  <% if @attending == false %>
+  <%= button_to "Attend", attendances_path(@event), id: "attend" %>
+  <% else %>
+    <%= button_to "Un-Attend", attendance_path(@event), method: :delete %>
+  <%end%>
 <% end %>
 
 <div class="container">
@@ -44,18 +48,5 @@
 
 </div>
 
-
-
-<!-- 
-      t.string :name
-      t.text :description
-      t.string :category
-      t.decimal :price
-      t.belongs_to :user
-      t.datetime :signup_start
-      t.datetime :signup_end
-      t.datetime :event_start
-      t.datetime :event_end
-      t.boolean :uses_paypal -->
 
 
