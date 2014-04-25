@@ -18,7 +18,7 @@
 
 <!-- else display attend button -->
 
-<% if Time.now > @event.signup_end || @attending = true %>
+<% if Time.now > @event.signup_end || @attending == true %>
   <%= button_to "Sign up for this event is now closed", {}, disabled: true %>
 <% else %>
   <%= button_to "Attend", attendances_path, id: "attend" %>
