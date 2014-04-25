@@ -57,15 +57,32 @@ describe Event do
 
     it "returns event with signup_start forwarded the specified recurring timeframe" do 
       recurring_event = Event.create_recurring_event(event)
-      puts "recurring event: #{recurring_event.inspect}"
 
       expect(recurring_event.signup_start).to eq(Time.new(2014, 4, 26, 2, 30, 30) + 1.week)
+    end
+
+    it "returns event with signup_end forwarded the specified recurring timeframe" do 
+      recurring_event = Event.create_recurring_event(event)
+
+      expect(recurring_event.signup_end).to eq(Time.new(2014, 4, 26, 2, 30, 30) + 1.day + 1.week)
+    end
+
+    it "returns event with event_start forwarded the specified recurring timeframe" do 
+      recurring_event = Event.create_recurring_event(event)
+
+      expect(recurring_event.event_start).to eq(Time.new(2014, 4, 26, 2, 30, 30) + 2.days + 1.week)
+    end
+
+    it "returns event with event_end forwarded the specified recurring timeframe" do 
+      recurring_event = Event.create_recurring_event(event)
+
+      expect(recurring_event.event_end).to eq(Time.new(2014, 4, 26, 2, 30, 30) + 3.days + 1.week)
     end
 
     it "saves a recurring event in the database" do 
       recurring_event = Event.create_recurring_event(event)
 
-      expect(recurring_event.id).should_not be_nil
+      expect(recurring_event.id).not_to be_nil
     end
   end
 
