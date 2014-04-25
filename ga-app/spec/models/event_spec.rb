@@ -37,6 +37,12 @@ describe Event do
 
       expect(recurring_event.signup_start).to eq(Time.new(2014, 4, 26, 2, 30, 30) + 1.week)
     end
+
+    it "saves a recurring event in the database" do 
+      recurring_event = Event.create_recurring_event(event)
+
+      expect(recurring_event.id).should_not be_nil
+    end
   end
 
 end

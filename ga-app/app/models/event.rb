@@ -33,6 +33,12 @@ class Event < ActiveRecord::Base
       signup_end: signup_end
       )
 
+    if event.save
+      event
+    else
+      raise "Unable to save event in the database"
+    end
+
   end
 
 end
