@@ -2,6 +2,7 @@ class EventsController < ApplicationController
 	def index
     if current_user
     	@events = Event.all
+    	@categories = Category.all
     else
       redirect_to sessions_new_path
     end
