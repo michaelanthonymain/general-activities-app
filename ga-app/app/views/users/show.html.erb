@@ -10,6 +10,7 @@
 </ul>
 
 <div class="tab" id="tab1">
+  <% if @attended_events.any? %>
   <table>
     <% @attended_events.each do |event| %>
       <tr>
@@ -17,10 +18,14 @@
       </tr>
     <% end %>
   </table>
+  <% else %>
+    <p>You're not attending any events.</p>
+  <% end %>
 </div>
 
 
 <div class="tab" id="tab2">
+  <% if @created_events.any? %>
   <table>
     <% @created_events.each do |event| %>
       <tr>
@@ -31,4 +36,7 @@
       </tr>
     <% end %>
   </table>
+  <% else %>
+    <p>You haven't created any events.</p>
+  <% end %>
 </div>

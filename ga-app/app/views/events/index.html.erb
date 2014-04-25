@@ -16,7 +16,7 @@
 
 <div id="EventList">
 	<% @events.reverse.each_with_index do |event, index| %>
-		<div class="mix category-<%= event.category.id %>" data-value="<%= index + 1 %>" data-time="<%= Time.now - event.event_start %>"> 
+		<div class="mix category-<%= event.category_id %>" data-value="<%= index + 1 %>" data-time="<%= Time.now - event.event_start %>"> 
 			 <%= link_to event.name, event %><br>
 			 <%= event.price %><br>
 			 <%= event.event_start.strftime("%c") %><br>
