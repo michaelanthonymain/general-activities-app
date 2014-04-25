@@ -1,14 +1,5 @@
 # require 'spec_helper'
 
-<<<<<<< HEAD
-# describe Event do
-#   it { should have_many(:attendances)}
-#   it { should have_many(:comments)}
-#   it { should have_many(:attendees).through(:attendances).source(:user)}
-#   it { should belong_to(:creator).class_name('User')}
-#   it { should belong_to(:category)}
-# end
-=======
 describe Event do
   #Associations
   it { should have_many(:attendances)}
@@ -31,4 +22,3 @@ describe Event do
   it { should have_db_column(:recurring_events).of_type(:boolean) }
   it { should have_db_column(:recurring_timeframe).of_type(:string) }
 end
->>>>>>> e162bfa2413cc69cc8d73f50c12c2ed3597f0f6e
