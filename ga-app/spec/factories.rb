@@ -13,4 +13,11 @@
 #     sequence(:email) {|n| "admin#{n}@example.com"}
 #   end
 
+<<<<<<< HEAD
+=======
+#   factory :event do
+#     name "Test event"
+#     description "This is a test event"
+#   end
+>>>>>>> e162bfa2413cc69cc8d73f50c12c2ed3597f0f6e
 # end
