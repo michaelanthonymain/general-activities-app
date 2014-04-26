@@ -4,7 +4,7 @@
 
 <ul class='details'>
 <h2><%= @event.name %></h2>
-<h3>Creator: <%= @event.name %></h3>
+<h3>Creator: <%= @event.creator.name %></h3>
 
   <li><%= "#{@event.event_start.strftime("%A - %B %e, %Y")}" %> @ 
   <%= "#{@event.event_start.strftime("%l:%M %p")}" %></li>
