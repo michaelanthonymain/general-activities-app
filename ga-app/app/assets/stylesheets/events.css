@@ -173,7 +173,7 @@ h3 {
 
 /* Event New */
 
-#create-event {
+#event-form {
 	width: 50%;
 	margin: 70px auto;
 }
@@ -192,10 +192,10 @@ h3 {
 	float: left;
 }
 
-#event_category_id, label[for='event_category'] {
+#event_category_id, label[for='event_category_id'] {
 	width: 240px;
 	float: right;
-	margin-top: -52px;
+	margin-top: -65px;
 }
 
 #event_signup_start {
@@ -222,7 +222,7 @@ h3 {
 	float: right;
 }
 
-#create-btn {
+#event-form-btn {
 	clear: both;
 	background: #7E68A8;
 	border: none;
@@ -234,6 +234,7 @@ h3 {
 	margin: -30px 10px 0 0;
 } 
 
-#create-btn:hover {
+#event-form-btn:hover {
 	background: #8e76bf;
 }
+

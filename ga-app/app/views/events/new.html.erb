@@ -1,6 +1,6 @@
 <%= render './nav' %>
 
-<div id='create-event'>
+<div id='event-form'>
   <h3>Create a new event:</h3>
     <%= form_for @event, url: user_events_path do |f| %>
     <div id='form-first'>
@@ -10,7 +10,7 @@
     <%= f.text_area :description, placeholder: 'Smooth music extravaganza' %> <br><br>
     <%= f.label :price, "Price:"%> <br>
     <%= f.text_field :price, placeholder: '10.00' %> <br><br>
-    <%= f.label :category, "Category:" %><br>
+    <%= f.label :category_id, "Category:" %><br>
     <%= collection_select(:event, :category_id, Category.all, :id, :name) %><br><br>
     </div>
     <div id='form-last'>
@@ -26,6 +26,6 @@
     <%= f.radio_button :uses_paypal, true %> Yes <br>
     <%= f.radio_button :uses_paypal, false %> No <br><br>
     </div>
-    <%= f.submit "Create Event", id: 'create-btn' %>
+    <%= f.submit "Create Event", id: 'event-form-btn' %>
   <%end%>
 </div>
