@@ -13,6 +13,7 @@ class EventsController < ApplicationController
 		attendance = Attendance.where(user: current_user, event: @event).first
 		attendance ? @attending = true : @attending = false
 		@comment = Comment.new
+		@people = @event.attendees
 	end
 
 	def new
