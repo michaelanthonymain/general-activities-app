@@ -161,3 +161,70 @@ h3 {
 #delete-btn:hover {
 	color: #7E68A8;
 }
+
+/* Event New */
+
+#create-event {
+	width: 50%;
+	margin: 70px auto;
+}
+
+#event_name {
+	width: 500px;
+}
+
+#event_description {
+	height: 160px;
+	width: 500px;
+}
+
+#event_price, label[for='event_price'] {
+	width: 240px;
+	float: left;
+}
+
+#event_category_id, label[for='event_category'] {
+	width: 240px;
+	float: right;
+	margin-top: -52px;
+}
+
+#event_signup_start {
+	width: 257px;
+}
+
+#event_signup_end {
+	width: 257px;
+}
+
+#event_event_start {
+	width: 257px;
+}
+
+#event_event_end {
+	width: 257px;
+}
+
+#form-first {
+	float: left;
+}
+
+#form-last {
+	float: right;
+}
+
+#create-btn {
+	clear: both;
+	background: #7E68A8;
+	border: none;
+	color: #FFF;
+	width: 150px;
+	height: 50px;
+	border-bottom: 2px solid #564872;
+	float: right;
+	margin: -30px 10px 0 0;
+} 
+
+#create-btn:hover {
+	background: #8e76bf;
+}
