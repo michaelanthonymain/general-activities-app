@@ -52,7 +52,7 @@
   <div id='comments'>
     <% @event.comments.each do |comment| %>
         <h4 class='author'><%= comment.user.name %>
-        <% if comment.user.id == session[:user_id] %>
+        <% if comment.user.id == @current_user.id || @creator.id == @current_user.id || @current_user.is_admin %>
           <%= button_to "X", event_comment_path(@event.id, session[:user_id], comment.id), id:'delete-btn', method: :delete %>
         <% end %></h4>
         <p><%= comment.content %></p>

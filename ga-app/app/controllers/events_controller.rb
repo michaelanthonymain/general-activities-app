@@ -14,6 +14,8 @@ class EventsController < ApplicationController
 		attendance ? @attending = true : @attending = false
 		@comment = Comment.new
 		@people = @event.attendees
+		@creator = @event.creator
+		@current_user = current_user
 	end
 
 	def new
