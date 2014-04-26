@@ -1,0 +1,40 @@
+/* Login */
+
+.login-section {
+	margin: auto;
+	width: 50%;
+	text-align: center;
+	margin-top: 20%;
+}
+
+.login-section h1 {
+	float: none;
+	margin-bottom: 100px;
+	line-height: 1em;
+}
+
+a#login {
+	background: #2AB6A6;
+	color: #FFF;
+	padding: 20px;
+	border-bottom: 2px solid #218c7e;
+}
+
+a#login:hover {
+	background: #2EC2B0;
+}
+
+/* Users Events */
+
+#user-info {
+	width: 40%;
+	margin: 50px auto;
+}
+
+img {
+	position: relative;
+	width: 250px;
+	height: 250px;
+	float: right;
+	margin-top: -100px;
+}

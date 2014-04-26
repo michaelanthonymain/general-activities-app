@@ -1,11 +1,14 @@
 <%= render './nav' %>
 
 <div id="sort-controls">
+	<h3>Sort by Date:</h3>
 	<div class="sort" data-sort="time:desc">Sooner</div>
 	<div class="sort" data-sort="time:asc">Later</div>
 </div>
 
+
 <div id="filter-controls">
+	<h3>Filter by Category:</h3>
 	<div class="filter" data-filter="all">All</div>
 	<% @categories.each do |cat| %>
 		<div class="filter" data-filter=".category-<%= cat.id %>">
@@ -14,13 +17,17 @@
 	<% end %>
 </div>
 
+<div class="border clear"></div>
+
 <div id="EventList">
 	<% @events.reverse.each_with_index do |event, index| %>
 		<div class="mix category-<%= event.category_id %>" data-value="<%= index + 1 %>" data-time="<%= Time.now - event.event_start %>"> 
 			 <%= link_to event.name, event %><br>
-			 <%= event.price %><br>
-			 <%= event.event_start.strftime("%c") %><br>
+			 $<%= event.price %><br>
+			 <%= event.event_start.strftime("%B %e, %Y @ %l:%M%p") %><br>
 		</div>
 
 	<%end%>
 </div>
+
+<div class='clear'></div>
