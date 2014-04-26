@@ -26,7 +26,7 @@
     <%= f.label :recurring_events, "Recurring Event?" %><br>
     <%= f.select :recurring_timeframe, ["weekly", "monthly"] %><br>
     <%= select_tag :number_of_occurrences, options_for_select([1,2,3,4,5,6,7,8,9,10,11,12]) %>
-    <%= label_tag :number_of_occurrences, "Number of times event repeats" %><br><br>
+    <%= label_tag :number_of_occurrences, "Number of times event occurs" %><br><br>
     <%= f.label :uses_paypal, "Using Paypal?" %> <br>
     <%= f.radio_button :uses_paypal, true %> Yes <br>
     <%= f.radio_button :uses_paypal, false %> No <br><br>
