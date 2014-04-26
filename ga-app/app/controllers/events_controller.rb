@@ -24,6 +24,7 @@ class EventsController < ApplicationController
 
 		if @event.save!
 			ModelMailer.new_event_notification(@event, current_user.email).deliver
+			Event.set_up_recurring_event(@event, params[:event][:number_of_occurrences])
 			redirect_to @event
 		else
 			render "new"

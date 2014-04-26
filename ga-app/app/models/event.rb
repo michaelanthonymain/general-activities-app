@@ -43,6 +43,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.set_up_recurring_event(last_event, number_of_occurences)
+    number_of_occurences = number_of_occurences.to_i - 1
     number_of_occurences.times do 
       last_event = Event.create_recurring_event(last_event)
     end
