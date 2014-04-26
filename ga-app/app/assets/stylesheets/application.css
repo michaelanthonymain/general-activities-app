@@ -13,11 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
 .container {
   margin: 20px auto;
-  /*width: 80%;*/
-  /*padding: 0px 20px 20px 20px;*/
-  /*border: 1px solid black;*/
 }
 
 body {
@@ -47,7 +45,7 @@ nav {
 	height: 75px;
 }
 
-nav h1 {
+h1 {
 	font-family: 'Sansita One', sans-serif;
 	float: left;
 	line-height: .45em;
@@ -69,4 +67,8 @@ nav ul li {
 
 .gray-border {
 	border-bottom: 2px solid #F2F2F2;
+}
+
+h3 {
+	font-family: 'Antic Slab', sans-serif;
 }
