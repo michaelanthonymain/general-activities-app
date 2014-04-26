@@ -49,9 +49,17 @@ class EventsController < ApplicationController
 	private
 
 	def event_params
-		params.require(:event).permit(:name, :description, :category_id,
-																	:price, :user_id, :signup_start,
-																	:signup_end, :event_start, :event_end,
-																	:uses_paypal)
+		if params[:recurring_events]
+			params.require(:event).permit(:name, :description, :category_id,
+																		:price, :user_id, :signup_start,
+																		:signup_end, :event_start, :event_end,
+																		:recurring_events, :recurring_timeframe, 
+																		:number_of_occurrences, :uses_paypal)
+		else
+			params.require(:event).permit(:name, :description, :category_id,
+																		:price, :user_id, :signup_start,
+																		:signup_end, :event_start, :event_end,
+																		:recurring_events, :uses_paypal)
+		end
 	end
 end
