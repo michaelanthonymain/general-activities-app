@@ -1,6 +1,6 @@
-<h1>Hop to It</h1>
 
 <nav>
+		<h1><%= link_to "Hop to It", root_path, id: 'logo' %></h1>
 	<ul>
 		<li><%= link_to "Events", events_path %></li>
 		<li><%= link_to "Create Event", new_user_event_path(current_user) %></li>
@@ -8,3 +8,5 @@
 		<li><%= link_to "Logout", sessions_logout_path %></li>
 	</ul>
 </nav>
+
+<div class='clear'></div>

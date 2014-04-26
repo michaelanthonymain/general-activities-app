@@ -1,7 +1,7 @@
 $(document).on('ready page:load', function () {
 	$('#EventList').mixItUp({
 		layout: {
-			display: 'block'
+			display: 'inline-block'
 		}
 	});
 });

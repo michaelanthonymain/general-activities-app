@@ -1,52 +1,56 @@
 <%= render './nav' %>
 
+<div id='event-details'>
+
+<ul class='details'>
 <h2><%= @event.name %></h2>
-<h3>Created by: <%= @event.name %></h3>
+<h3>Creator: <%= @event.creator.name %></h3>
 
-<ul>
-  <li>Price: $<%= @event.price %></li>
-  <li><%= "#{@event.event_start.strftime("%A, %B %e, %Y")}" %></li>
-  <li><%= "#{@event.event_start.strftime("%l:%M%p")}" %></li>
-  
-  <li><%= @event.description%></li>
-  <li>Sign Up By:</li>
-  <li><%= "#{@event.signup_end.strftime("%A, %B %e, %Y")}" %></li>
-  <li><%= "#{@event.signup_end.strftime("%l:%M%p")}" %></li>
+  <li><%= "#{@event.event_start.strftime("%A - %B %e, %Y")}" %> @ 
+  <%= "#{@event.event_start.strftime("%l:%M %p")}" %></li>
+  <li>Current Price: $<%= @event.price %></li>
 </ul>
+  
+  <p class='description'> <%= @event.description%> </p>
+  <p><b>Sign up by:</b> <br>
 
-<!-- If an attendance entry already exists for current user and event id, display unattend button -->
+    <%= "#{@event.signup_end.strftime("%A, %B %e, %Y")}" %>
+    <%= "#{@event.signup_end.strftime("%l:%M%p")}" %>
 
-<!-- else display attend button -->
-
-<% if Time.now > @event.signup_end %>
-  <%= button_to "Sign up for this event is now closed", {}, disabled: true %>
-<% else %>
-  <% if @attending == false %>
-  <%= button_to "Attend", attendances_path(@event), id: "attend" %>
-  <% else %>
-    <%= button_to "Un-Attend", attendance_path(@event), method: :delete %>
-  <%end%>
-<% end %>
-
-<div class="container">
-<h4>Comments Section</h4>
-  <% @event.comments.each do |comment| %>
-    <div class="container">
-      <h4><%= comment.user.name %></h4>
-      <p><%= comment.content %></p>
-      <% if comment.user.id == session[:user_id] %>
-        <%= button_to "Delete Comment", event_comment_path(@event.id, session[:user_id], comment.id), method: :delete %>
-      <% end %>
-    </div>
-  <% end %>
-  <h5>Comment on this post:</h5>
-  <%= form_for @comment, url: event_comments_path(@event.id) do |f| %>
-    <%= f.label :content, "Content:" %><br>
-    <%= f.text_area :content, size: '40x10' %><br><br>
-    <%= f.submit "Comment" %>
-  <% end %>
+    <% if Time.now > @event.signup_end %>
+      <%= button_to "Sign up for this event is now closed", {}, disabled: true, id: 'signup-closed' %>
+    <% else %>
+      <% if @attending == false %>
+      <%= button_to "Attend", attendances_path(@event), id: "attend" %>
+      <% else %>
+        <%= button_to "Un-Attend", attendance_path(@event), id: "unattend", method: :delete %>
+      <%end%>
+    <% end %>
+    </p>
 
 </div>
 
+<div class="teal-border"></div>
 
+<div id="comment-section">
+  <div id='comment-box'>
+    <h4>Care to comment?</h4>
+    <%= form_for @comment, url: event_comments_path(@event.id) do |f| %>
+      <%= f.text_area :content, size: '50x8' %><br><br>
+      <%= f.submit "Comment", id: 'comment-btn' %>
+    <% end %>
+  </div>
 
+  <div id='comments'>
+    <% @event.comments.each do |comment| %>
+        <h4 class='author'><%= comment.user.name %>
+        <% if comment.user.id == session[:user_id] %>
+          <%= button_to "X", event_comment_path(@event.id, session[:user_id], comment.id), id:'delete-btn', method: :delete %>
+        <% end %></h4>
+        <p><%= comment.content %></p>
+        <div class='gray-border'></div>
+    <% end %>
+  </div>
+</div>
+
+<div class='clear'></div>
