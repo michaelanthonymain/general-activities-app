@@ -25,6 +25,22 @@ body {
 	font-weight: 300;
 }
 
+a {
+	color: #2AB6A6;
+	text-decoration: none;
+	font-weight: 400;
+}
+
+a:hover {
+	color: #7E68A8;
+}
+
+a#logo {
+	color: #000;
+	text-decoration: none;
+	font-weight: 400;
+}
+
 nav {
 	padding: 0 50px;
 	border-bottom: 2px #F2F2F2 solid;
@@ -46,15 +62,6 @@ nav ul li {
 	padding-right: 20px;
 }
 
-a {
-	color: #2AB6A6;
-	text-decoration: none;
-	font-weight: 400;
-}
-
-a:hover {
-	color: #7E68A8;
-}
 
 .teal-border {
 	border-bottom: 2px solid #2AB6A6;
