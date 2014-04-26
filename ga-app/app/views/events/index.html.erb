@@ -24,7 +24,7 @@
 		<div class="mix category-<%= event.category_id %>" data-value="<%= index + 1 %>" data-time="<%= Time.now - event.event_start %>"> 
 			 <%= link_to event.name, event %><br>
 			 $<%= event.price %><br>
-			 <%= event.event_start.strftime("%c") %><br>
+			 <%= event.event_start.strftime("%B %e, %Y @ %l:%M%p") %><br>
 		</div>
 
 	<%end%>
