@@ -18,13 +18,14 @@ class EventsController < ApplicationController
 
 	def new
 		@event = Event.new
-	end
+	end 
 
 	def create
 		@event = Event.new(event_params.merge(user_id: params[:user_id]))
 
 		if @event.save!
 			ModelMailer.new_event_notification(@event, current_user.email).deliver
+			Event.set_up_recurring_event(@event, params[:event][:number_of_occurrences])
 			redirect_to @event
 		else
 			render "new"
@@ -50,9 +51,17 @@ class EventsController < ApplicationController
 	private
 
 	def event_params
-		params.require(:event).permit(:name, :description, :category_id,
-																	:price, :user_id, :signup_start,
-																	:signup_end, :event_start, :event_end,
-																	:uses_paypal)
+    if params[:recurring_events]
+      params.require(:event).permit(:name, :description, :category_id,
+                                    :price, :user_id, :signup_start,
+                                    :signup_end, :event_start, :event_end,
+                                    :recurring_events, :recurring_timeframe, 
+                                    :number_of_occurrences, :uses_paypal)
+    else
+      params.require(:event).permit(:name, :description, :category_id,
+                                    :price, :user_id, :signup_start,
+                                    :signup_end, :event_start, :event_end,
+                                    :recurring_events, :uses_paypal)
+    end
 	end
 end

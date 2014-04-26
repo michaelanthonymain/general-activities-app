@@ -90,11 +90,11 @@ describe Event do
     let(:event) { FactoryGirl.build(:event)}
 
     it "saves a recurring event the number times the user sets" do 
-      number_of_occurances = 3
-      Event.set_up_recurring_event(event, number_of_occurances)
+      number_of_occurences = 3
+      Event.set_up_recurring_event(event, number_of_occurences)
 
       events = Event.where(name: "Test Event")
-      expect(events).should have(number_of_occurances).items
+      expect(events).should have(number_of_occurences).items
     end
   end
 
