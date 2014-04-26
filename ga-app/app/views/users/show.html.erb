@@ -1,13 +1,20 @@
 <%= render './nav' %>
 
-<h3><%= @user.name %><br>
-<%= @user.cohort %></h3>
-<%= image_tag @user.avatar_url %><br>
-<b>Email: </b><%= @user.email %><br>
-<ul class="tabs">
-  <li class="active"><a href="#tab1">What am I doing?</a></li>
-  <li><a href="#tab2">What am I?</a></li>
-</ul>
+<div id='user-info'>
+  <h2><%= @user.name %></h2>
+  <h3><%= @user.cohort %></h3>
+  <b>Email: </b><%= @user.email %><br>
+  <%= image_tag @user.avatar_url %><br>
+</div>
+
+<div class='clear'></div>
+
+<div id='tab-btns'>
+  <ul class="tabs">
+    <li class="active"><a href="#tab1">What am I doing?</a></li>
+    <li><a href="#tab2">What am I hosting?</a></li>
+  </ul>
+</div>
 
 <div class="tab" id="tab1">
   <% if @attended_events.any? %>
@@ -15,6 +22,7 @@
     <% @attended_events.each do |event| %>
       <tr>
         <td> <%= link_to event.name, event %> </td>
+        <td> <%= event.event_start.strftime('%B %e, %Y @ %l:%M%p') %> </td>
       </tr>
     <% end %>
   </table>
@@ -32,7 +40,7 @@
         <td><%= event.name %></td>
         <td><%= link_to 'Edit', edit_user_event_path(@user.id, event) %></td>
         <td><%= button_to "delete", {:controller => :events,
-      :action => 'destroy', :id => event.id, :user_id => @user.id }, :method => :delete %></td>
+      :action => 'destroy', :id => event.id, :user_id => @user.id }, :method => :delete, class: 'delete-event-btn' %></td>
       </tr>
     <% end %>
   </table>
