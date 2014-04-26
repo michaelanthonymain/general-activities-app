@@ -120,6 +120,15 @@ h3 {
 	background: #30ccb9;
 }
 
+#signup-closed {
+	background: #d6597b;
+	border: none;
+	width: 300px;
+	height: 55px;
+	color: #FFF;
+	border-bottom: 2px solid #ad4863;
+}
+
 #comment-section {
 	width: 70%;
 	margin: 0 auto;
