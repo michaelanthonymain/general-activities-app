@@ -17,7 +17,9 @@
     <%= "#{@event.signup_end.strftime("%A, %B %e, %Y")}" %>
     <%= "#{@event.signup_end.strftime("%l:%M%p")}" %>
 
-    <% if Time.now > @event.signup_end %>
+    <% if Time.now < @event.signup_start %>
+      <%= button_to "Sign up starts #{@event.signup_start.strftime("%B %e, %Y @ %l:%M%p")}", {}, disabled: true, id: 'signup-closed' %>
+    <% elsif Time.now > @event.signup_end %>
       <%= button_to "Sign up for this event is now closed", {}, disabled: true, id: 'signup-closed' %>
     <% else %>
       <% if @attending == false %>
