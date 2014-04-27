@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-	
+
   def create
     @attendance = Attendance.new(event_id: params[:format], user_id: session[:user_id], is_paid: false)
     @attendance.save!
@@ -22,11 +22,11 @@ class AttendancesController < ApplicationController
     render json: { paid: paid }
   end
 
-	def destroy
-	  @attendance = Attendance.find_by_user_id_and_event_id(session[:user_id], params[:id] )
+  def destroy
+    @attendance = Attendance.find_by_user_id_and_event_id(session[:user_id], params[:id] )
     @attendance.destroy
     redirect_to Event.find(params[:id])
-	end
+  end
 
   private
 

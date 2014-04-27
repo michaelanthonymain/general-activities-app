@@ -49,7 +49,7 @@ FactoryGirl.define do
   factory :attendance do
     user
     event
-    is_paid "true"
+    is_paid false
   end
 
   factory :comment do
