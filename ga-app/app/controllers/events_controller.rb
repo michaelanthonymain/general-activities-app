@@ -38,7 +38,7 @@ class EventsController < ApplicationController
 
 	def update
 		@event_to_update = Event.find(params[:id])
-		@event_to_update.update(event_params)
+		@event_to_update.update!(event_params)
 		redirect_to @event_to_update
 	end
 

@@ -34,6 +34,7 @@
   <h3>People Attending:</h3>
     <% @people.each do |peep| %>
       <p><%= peep.name %><p>Has paid: </p> <%= peep.attendances.where(event_id: @event.id).first.is_paid %></p>
+      <%=  button_to "Change paid status", edit_attendance_path(peep.attendances.where(event_id: @event.id).first.id), id: 'change_paid_status', method: :edit %>
     <% end %>
   <% end %>
 

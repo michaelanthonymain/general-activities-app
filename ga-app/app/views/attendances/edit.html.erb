@@ -1,0 +1,15 @@
+<%= render './nav' %>
+
+<div id='attendance-form'>
+<h3>Update the attendee's payment status</h3>
+<%= form_for @attendance, url: edit_attendance_path do |f| %>
+<div>
+  
+  <h4>Has <%= @attendance.user.name %> paid?</h4>
+
+  <%= f.radio_button :is_paid, true %> Yes<br>
+  <%= f.radio_button :is_paid, false %> No <br><br>
+  </div>
+  <%= f.submit "Update status", id: 'attendance-form-btn' %>
+<% end %>
+</div>
