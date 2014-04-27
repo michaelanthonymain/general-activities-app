@@ -5,6 +5,8 @@ class Event < ActiveRecord::Base
   belongs_to :creator, class_name: "User", foreign_key: :user_id
   belongs_to :category
 
+  validates_presence_of :name
+
   def self.create_recurring_event(last_event)
 
     if last_event.recurring_timeframe == "weekly"
@@ -44,7 +46,7 @@ class Event < ActiveRecord::Base
 
   def self.set_up_recurring_event(last_event, number_of_occurences)
     number_of_occurences = number_of_occurences.to_i - 1
-    number_of_occurences.times do 
+    number_of_occurences.times do
       last_event = Event.create_recurring_event(last_event)
     end
   end
@@ -60,4 +62,4 @@ end
 
 
 
-  
+
