@@ -33,7 +33,7 @@
 </div>
 
 <div id='attendees'>
-  <% if @event.user_id == session[:user_id] %>
+  <% if @event.user_id == session[:user_id] || @current_user.is_admin %>
   <h3>People Attending:</h3>
     <% if @people.any? %>
       <% @people.each do |peep| %>
@@ -43,6 +43,7 @@
           <td>Has paid: <%= peep.attendances.where(event_id: @event.id).first.is_paid %></td>
         </tr>
         </table>
+        <%=  button_to "Change paid status", edit_attendance_path(peep.attendances.where(event_id: @event.id).first.id), id: 'change_paid_status', method: :edit %>
       <% end %>
       <% else %>
       <p>If you book them, they will come.</p>
