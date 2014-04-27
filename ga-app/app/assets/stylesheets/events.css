@@ -238,3 +238,19 @@ h3 {
 	background: #8e76bf;
 }
 
+/* Event Attendees */
+
+#attendees {
+	margin-left: 15%;
+	width: 40%;
+	margin-bottom: 20px;
+}
+
+#attendees table, #attendees tr {
+	width: 85%;
+	border: 1px solid #F2F2F2;
+}
+
+#attendees table td {
+	width: 50%;
+}

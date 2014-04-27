@@ -13,6 +13,9 @@
   <ul class="tabs">
     <li class="active"><a href="#tab1">What am I doing?</a></li>
     <li><a href="#tab2">What am I hosting?</a></li>
+    <% if @user.is_admin %>
+      <li><a href="#tab3">All Events</a></li>
+    <% end %>
   </ul>
 </div>
 
@@ -46,5 +49,22 @@
   </table>
   <% else %>
     <p>You haven't created any events.</p>
+  <% end %>
+</div>
+
+<div class="tab" id="tab3">
+  <% if @all_events.any? && @user.is_admin %>
+  <table>
+    <% @all_events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= link_to 'Edit', edit_user_event_path(@user.id, event) %></td>
+        <td><%= button_to "delete", {:controller => :events,
+      :action => 'destroy', :id => event.id, :user_id => @user.id }, :method => :delete, class: 'delete-event-btn' %></td>
+      </tr>
+    <% end %>
+  </table>
+  <% else %>
+    <p>There are no events.</p>
   <% end %>
 </div>

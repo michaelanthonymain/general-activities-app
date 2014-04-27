@@ -29,5 +29,6 @@ FactoryGirl.define do
     recurring_events true
     recurring_timeframe "weekly"
   end
+
 end
 
