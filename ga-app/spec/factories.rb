@@ -42,6 +42,10 @@ FactoryGirl.define do
     recurring_timeframe "weekly"
   end
 
+  factory :invalid_event, parent: :event do
+    name nil
+  end
+
   factory :attendance do
     user
     event
