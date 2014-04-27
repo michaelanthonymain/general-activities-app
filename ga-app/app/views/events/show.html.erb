@@ -8,7 +8,7 @@
 
   <li><%= "#{@event.event_start.strftime("%A - %B %e, %Y")}" %> @ 
   <%= "#{@event.event_start.strftime("%l:%M %p")}" %></li>
-  <li>Current Price: $<%= @event.price %></li>
+  <li>Current Price: <%= number_to_currency(@event.price_per_person, precision: 2) %></li>
 </ul>
   
   <p class='description'> <%= @event.description%> </p>
@@ -17,7 +17,9 @@
     <%= "#{@event.signup_end.strftime("%A, %B %e, %Y")}" %>
     <%= "#{@event.signup_end.strftime("%l:%M%p")}" %>
 
-    <% if Time.now > @event.signup_end %>
+    <% if Time.now < @event.signup_start %>
+      <%= button_to "Sign up starts #{@event.signup_start.strftime("%B %e, %Y @ %l:%M%p")}", {}, disabled: true, id: 'signup-closed' %>
+    <% elsif Time.now > @event.signup_end %>
       <%= button_to "Sign up for this event is now closed", {}, disabled: true, id: 'signup-closed' %>
     <% else %>
       <% if @attending == false %>
@@ -29,15 +31,26 @@
     </p>
 
 </div>
-<div>
+
+<div id='attendees'>
   <% if @event.user_id == session[:user_id] %>
   <h3>People Attending:</h3>
-    <% @people.each do |peep| %>
-      <p><%= peep.name %><p>Has paid: </p> <%= peep.attendances.where(event_id: @event.id).first.is_paid %></p>
-    <% end %>
+    <% if @people.any? %>
+      <% @people.each do |peep| %>
+      <table>
+        <tr>
+          <td><%= peep.name %></td>
+          <td>Has paid: <%= peep.attendances.where(event_id: @event.id).first.is_paid %></td>
+        </tr>
+        </table>
+      <% end %>
+      <% else %>
+      <p>If you book them, they will come.</p>
+      <% end %>
   <% end %>
 
 </div>
+
 <div class="teal-border"></div>
 
 <div id="comment-section">

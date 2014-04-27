@@ -1,7 +1,7 @@
 class AttendancesController < ApplicationController
 	
   def create
-    @attendance = Attendance.new(event_id: params[:format], user_id: session[:user_id])
+    @attendance = Attendance.new(event_id: params[:format], user_id: session[:user_id], is_paid: false)
     @attendance.save!
     redirect_to Event.find(params[:format])
 	end

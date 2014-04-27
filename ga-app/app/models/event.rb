@@ -49,6 +49,12 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def price_per_person
+    attendee_count = self.attendees.length
+    attendee_count = 1 if self.attendees.length == 0
+    self.price / attendee_count
+  end
+
 end
 
 
