@@ -8,15 +8,16 @@ class EventsController < ApplicationController
           end
 	end
 
-	def show
-		@event = Event.find(params[:id])
-		attendance = Attendance.where(user: current_user, event: @event).first
-		attendance ? @attending = true : @attending = false
-		@comment = Comment.new
-		@people = @event.attendees
-		@creator = @event.creator
-		@current_user = current_user
-	end
+  def show
+    @event = Event.find(params[:id])
+    attendance = Attendance.where(user: current_user, event: @event).first
+    attendance ? @attending = true : @attending = false
+    @comment = Comment.new
+    @attendances = @event.attendances
+    @creator = @event.creator
+    @current_user = current_user
+
+  end
 
 	def new
 		@event = Event.new

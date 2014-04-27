@@ -7,13 +7,19 @@ class AttendancesController < ApplicationController
   end
 
   def edit
-    @attendance = Attendance.find(params[:id] )
+    @attendance = Attendance.find(params[:id])
   end
 
   def update
+    if params[:paid] == "true" 
+      paid = false 
+    else 
+      paid = true
+    end
     @attendance_to_update = Attendance.find(params[:id])
-    @attendance_to_update.update(attendance_params)
-    redirect_to Event.find(@attendance_to_update.event_id)
+    @attendance_to_update.update_attributes(is_paid: paid)
+
+    render json: { paid: paid }
   end
 
 	def destroy
@@ -25,7 +31,7 @@ class AttendancesController < ApplicationController
   private
 
   def attendance_params
-    params.require(:attendance).permit(:user_id, :event_id, :is_paid)
+    params.require(:attendance).permit(:user_id, :event_id, :is_paid, :id, :paid)
   end
 
 end

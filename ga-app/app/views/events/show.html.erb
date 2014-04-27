@@ -32,25 +32,22 @@
 
 </div>
 
-<div id='attendees'>
+  <div id='attendees'>
   <% if @event.user_id == session[:user_id] || @current_user.is_admin %>
   <h3>People Attending:</h3>
-    <% if @people.any? %>
-      <% @people.each do |peep| %>
+    <% if @attendances.any? %>
+      <% @attendances.each do |attendance| %>
       <table>
         <tr>
-          <td><%= peep.name %></td>
-          <td>Has paid: <%= peep.attendances.where(event_id: @event.id).first.is_paid %></td>
+          <td><%= attendance.user.name %></td>
+          <td><%= has_paid(attendance) %></td>
         </tr>
         </table>
-        <%=  button_to "Change paid status", edit_attendance_path(peep.attendances.where(event_id: @event.id).first.id), id: 'change_paid_status', method: :edit %>
       <% end %>
       <% else %>
       <p>If you book them, they will come.</p>
       <% end %>
   <% end %>
-
-</div>
 
 <div class="teal-border"></div>
 
@@ -59,7 +56,7 @@
     <h4>Care to comment?</h4>
     <%= form_for @comment, url: event_comments_path(@event.id) do |f| %>
       <%= f.text_area :content, size: '50x8' %><br><br>
-      <%= f.submit "Comment", id: 'comment-btn' %>
+      <%= f.submit "Comment", id: 'comment-btn', remote: true %>
     <% end %>
   </div>
 
