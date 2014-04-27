@@ -165,7 +165,24 @@ describe EventsController do
   end
 
   describe "PUT #update" do
+    let(:user) {FactoryGirl.create(:user)}
+    let(:event) {FactoryGirl.create(:event)}
 
+    it "located the requested event" do
+      put :update, {:user_id => user.id, :id => event.id, event: FactoryGirl.attributes_for(:event) }
+      assigns(:event_to_update).should eq(event)
+    end
+
+    it "changes @contact's attributes" do
+      put :update, {:user_id => user.id, :id => event.id, event: FactoryGirl.attributes_for(:event, name: "Updated") }
+      event.reload
+      event.name.should eq("Updated")
+    end
+
+    it "redirects to the updated contact" do
+      put :update, {:user_id => user.id, :id => event.id, event: FactoryGirl.attributes_for(:event) }
+      response.should redirect_to event
+    end
   end
 
   describe "DELETE #destroy" do
