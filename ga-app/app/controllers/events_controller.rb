@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
 	def index
-    if current_user
-    	@events = Event.all
-    	@categories = Category.all
-    else
-      redirect_to sessions_new_path
-    end
+          if current_user
+          	@events = Event.all
+          	@categories = Category.all
+          else
+            redirect_to sessions_new_path
+          end
 	end
 
 	def show
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
 	def new
 		@event = Event.new
-	end 
+	end
 
 	def create
 		@event = Event.new(event_params.merge(user_id: params[:user_id]))
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 		else
 			render "new"
 		end
-		
+
 	end
 
 	def edit
@@ -53,17 +53,17 @@ class EventsController < ApplicationController
 	private
 
 	def event_params
-    if params[:recurring_events]
-      params.require(:event).permit(:name, :description, :category_id,
-                                    :price, :user_id, :signup_start,
-                                    :signup_end, :event_start, :event_end,
-                                    :recurring_events, :recurring_timeframe, 
-                                    :number_of_occurrences, :uses_paypal)
-    else
-      params.require(:event).permit(:name, :description, :category_id,
-                                    :price, :user_id, :signup_start,
-                                    :signup_end, :event_start, :event_end,
-                                    :recurring_events, :uses_paypal)
-    end
+          if params[:recurring_events]
+            params.require(:event).permit(:name, :description, :category_id,
+                                          :price, :user_id, :signup_start,
+                                          :signup_end, :event_start, :event_end,
+                                          :recurring_events, :recurring_timeframe,
+                                          :number_of_occurrences, :uses_paypal)
+          else
+            params.require(:event).permit(:name, :description, :category_id,
+                                          :price, :user_id, :signup_start,
+                                          :signup_end, :event_start, :event_end,
+                                          :recurring_events, :uses_paypal)
+          end
 	end
 end

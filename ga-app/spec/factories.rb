@@ -2,20 +2,32 @@ require 'spec_helper'
 
 FactoryGirl.define do
 
-  factory :user do
-    is_admin false
+  factory :user, aliases: [:creator, :attendee] do
     name "TestUser"
     sequence(:email) { |n| "#{name}#{n}@example.com"}
   end
 
+  factory :admin_user, parent: :user do
+    is_admin true
+  end
 
-#   factory :admin, class: User do
-#     is_admin true
-#     name "Admin User"
-#     sequence(:email) {|n| "admin#{n}@example.com"}
-#   end
+  factory :category do
+    name "TestCategory"
+
+    factory :category_with_events do
+      ignore do
+        events_count 5
+      end
+
+      after(:create) do |category, evaluator|
+        create_list(:event, evaluator.events_count, category: category)
+      end
+    end
+  end
 
   factory :event do
+    category
+    creator
     name "Test Event"
     description "Testing with a factory"
     category_id 1
@@ -30,5 +42,22 @@ FactoryGirl.define do
     recurring_timeframe "weekly"
   end
 
+  factory :attendance do
+    user
+    event
+    is_paid "true"
+  end
+
+  factory :comment do
+    user
+    event
+    content "This is a test comment"
+  end
+
+#   factory :admin, class: User do
+#     is_admin true
+#     name "Admin User"
+#     sequence(:email) {|n| "admin#{n}@example.com"}
+#   end
 end
 
