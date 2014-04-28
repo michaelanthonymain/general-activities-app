@@ -11,10 +11,22 @@
 	<h3>Filter by Category:</h3>
 	<div class="filter" data-filter="all">All</div>
 	<% @categories.each do |cat| %>
-		<div class="filter" data-filter=".category-<%= cat.id %>">
-			<%= cat.name %>
-		</div>
+			<div class="filter" data-filter=".category-<%= cat.id %>">
+				<%= cat.name %>
+			</div>
 	<% end %>
+</div>
+
+<div id="filter-controls-dropdown">
+	<h3>Filter by Category:</h3>
+	<!-- <div class="filter" data-filter="all">All</div> -->
+		<select onchange="$('#EventList').mixItUp('filter', this.value)">
+			<option value='all'>All</option>
+		<% @categories.each do |cat| %>
+			
+		<option value='.category-<%= cat.id %>'><%= cat.name %></option>
+		<% end %>
+	</select>
 </div>
 
 <div class="border clear"></div>
