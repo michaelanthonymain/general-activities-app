@@ -43,9 +43,10 @@ describe AttendancesController do
       att.is_paid.should eq(true)
     end
 
-    it "redirects to the updated event" do
-      put :update, {id: att.id, attendance: FactoryGirl.attributes_for(:attendance, event_id: event.id)}
-      response.should redirect_to event
+    it "renders json" do
+      put :update, {id: att.id, paid: true, attendance: FactoryGirl.attributes_for(:attendance, event_id: event.id)}
+      parsed_body = JSON.parse(response.body)
+      parsed_body["paid"].should eq(true)
     end
   end
 

@@ -61,10 +61,10 @@ describe EventsController do
       assigns(:comment).kind_of?(Comment).should be_true
     end
 
-    it "should assign @people to the event's attendees" do
-      people = event.attendees
+    it "should assign @attendances to the event's attendances" do
+      attendances = event.attendances
       get :show, {:id => event.id}
-      expect(assigns(:people)).to eq(people)
+      expect(assigns(:attendances)).to eq(attendances)
     end
 
     it "should assign @creator to the event's creator" do
