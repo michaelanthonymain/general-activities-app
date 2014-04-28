@@ -72,3 +72,20 @@ nav ul li {
 h3 {
 	font-family: 'Antic Slab', sans-serif;
 }
+
+@media screen and (max-width: 660px) {
+	nav ul {
+		float: none;
+		padding: 0;
+	}
+
+	nav {
+		padding: 1px 0 0 0;
+		text-align: center;
+		height: 100px;
+	}
+
+	nav h1 {
+		float: none;
+	}
+}
