@@ -49,6 +49,25 @@
 	padding-left: 20px;
 }
 
+#filter-controls-dropdown {
+	display: none;
+	width: 18%;
+	position: fixed;
+	margin-top: 125px;
+	padding-left: 20px;
+}
+
+#filter-controls-dropdown select {
+	background: #FFF url(select-arrow.png) no-repeat 98% center;
+  width: 100%;
+  padding: 5px;
+  line-height: 1em;
+  border: 2px solid #7E68A8;
+  border-radius: 0;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 
 .filter {
 	border-bottom: 2px solid #7E68A8;
@@ -253,4 +272,150 @@ h3 {
 
 #attendees table td {
 	width: 50%;
+}
+
+
+@media screen and (max-height: 860px) {
+	#filter-controls {
+		display: none;
+	}
+
+	#filter-controls-dropdown {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 1580px) {
+	.mix {
+		width: 20%;
+	}
+
+	#event-form {
+		width: 70%;
+	}
+
+}
+
+@media screen and (max-width: 1270px) {
+	.mix {
+		width: 27%;
+	}
+
+	#event-details {
+		width: 90%;
+	}
+
+	#attendees {
+		width: 90%;
+	}
+
+	#comment-section {
+		width: 90%;
+	}
+
+	#event-form {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 1010px) {
+	.mix {
+		width: 40%;
+		margin-left: 2%;
+	}
+
+	#filter-controls {
+		display: none;
+	}
+
+	#filter-controls-dropdown {
+		display: block;
+	}
+
+	#comment-box {
+		position: relative;
+		width: 100%;
+		margin-bottom: 30px;
+		float: none;
+	}
+
+	#comment-box textarea {
+		width: 100%;
+	}
+
+	#comment-box input[type="submit"] {
+		float: right;
+	}
+
+	#comments {
+		position: relative;
+		width: 90%;
+		float: none;
+	}
+
+	#event-form {
+		width: 50%;
+	}
+
+	#form-first {
+		float: none;
+	}
+
+	#form-last {
+		float: none;
+	}
+
+	#event_category_id, label[for='event_category_id'] {
+		float: none;
+	}
+}
+
+@media screen and (max-width: 730px) {
+	
+	#EventList {
+		float: none;
+		margin-left: 4%;
+	}
+	
+	.mix {
+		width: 100%;
+	}
+
+	#sort-controls {
+		width: 40%;
+		margin-left: 2%;
+		position: relative;
+		float: left;
+	}
+
+	#filter-controls-dropdown {
+		width: 40%;
+		position: relative;
+		margin-top: 0;
+		float: left;
+	}
+
+	.details {
+		width: 100%;
+		position: relative;
+	}
+
+	.description {
+		width: 90%;
+		position: relative;
+		float: none;
+		margin-top: 0;
+	}
+
+	#event-form {
+		width: 90%;
+	}
+	#event_name {
+		width: 90%;
+	}
+
+	#event_description {
+		height: 160px;
+		width: 90%;
+	}
 }
